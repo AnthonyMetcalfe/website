@@ -1,0 +1,15 @@
+.navigation-bar {
+  height: 30px;
+  background-color: #333333;
+  width: 100%;
+  display: flex;
+  color: white;
+  > span {
+    margin-left: 8px;
+    margin-top: 6px;
+  }
+}
+
+.flex-fill {
+  flex: 1 1 auto;
+}
