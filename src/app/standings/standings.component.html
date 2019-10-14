@@ -1,87 +1,31 @@
 <html>
   <header><title>AM</title></header>
   <body>
-    <!-- <table mat-table [dataSource]="">
-
-    </table> -->
-
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th>User</th>
-          <th>Team</th>
-          <th>Wins</th>
-          <th>Losses</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>JRupp4</td>
-          <td>Nuk Town</td>
-          <td>37</td>
-          <td>8</td>
-        </tr>
-        <tr>
-          <td>hibba032</td>
-          <td>Red Rifle Train</td>
-          <td>32</td>
-          <td>13</td>
-        </tr>
-        <tr>
-          <td>dirtydadbod</td>
-          <td>Minshew's Minge-Tickler</td>
-          <td>27</td>
-          <td>18</td>
-        </tr>
-        <tr>
-          <td>jedelstein18</td>
-          <td>The Nose Knows</td>
-          <td>24</td>
-          <td>21</td>
-        </tr>
-        <tr>
-          <td>bjanczuk</td>
-          <td>Fuck iMessage</td>
-          <td>22</td>
-          <td>23</td>
-        </tr>
-        <tr>
-          <td>KuehnRemarks</td>
-          <td>Sophomore Captains</td>
-          <td>20</td>
-          <td>25</td>
-        </tr>
-        <tr>
-          <td>jeremylutz</td>
-          <td>JULIO THINK YOU ARE I AM</td>
-          <td>20</td>
-          <td>25</td>
-        </tr>
-        <tr>
-          <td>Holmdaddy</td>
-          <td>Papa Johnr</td>
-          <td>16</td>
-          <td>29</td>
-        </tr>
-        <tr>
-          <td>usmani03</td>
-          <td>Spelling Bee Champions</td>
-          <td>14</td>
-          <td>31</td>
-        </tr>
-        <tr>
-          <td>anthonymetcalfe</td>
-          <td>High School Co-Valedictorian</td>
-          <td>13</td>
-          <td>32</td>
-        </tr>
-      </tbody>
+    <table mat-table class="table table-condensed" [dataSource]="owners">
+      <ng-container matColumnDef="user">
+        <th mat-header-cell *matHeaderCellDef>User</th>
+        <td mat-cell *matCellDef="let owner">{{ owner.user }}</td>
+      </ng-container>
+      <ng-container matColumnDef="team">
+        <th mat-header-cell *matHeaderCellDef>Team</th>
+        <td mat-cell *matCellDef="let owner">{{ owner.name }}</td>
+      </ng-container>
+      <ng-container matColumnDef="wins">
+        <th mat-header-cell *matHeaderCellDef>Wins</th>
+        <td mat-cell *matCellDef="let owner">{{ owner.wins }}</td>
+      </ng-container>
+      <ng-container matColumnDef="losses">
+        <th mat-header-cell *matHeaderCellDef>Losses</th>
+        <td mat-cell *matCellDef="let owner">{{ owner.losses }}</td>
+      </ng-container>
+      <tr
+        mat-header-row
+        *matHeaderRowDef="['user', 'team', 'wins', 'losses']"
+      ></tr>
+      <tr
+        mat-row
+        *matRowDef="let row; columns: ['user', 'team', 'wins', 'losses']"
+      ></tr>
     </table>
   </body>
 </html>
-
-{{ users | async | json }}
-
-{{ rosters | async | json }}
-
-{{ weekOneMatchups | async | json }}

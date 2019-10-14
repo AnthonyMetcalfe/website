@@ -10,4 +10,5 @@ export interface RosterSettings {
   fpts_decimal: number;
   ppts: number;
   ppts_decimal: number;
+  losses: number;
 }
