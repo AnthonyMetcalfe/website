@@ -4,4 +4,5 @@ export interface Owner {
   wins: number;
   ties: number;
   losses: number;
+  weeklyChange?: number;
 }

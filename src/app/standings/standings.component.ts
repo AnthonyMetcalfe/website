@@ -1,7 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { combineLatest, Observable, of, from } from 'rxjs';
-import { map, tap, take, switchMap, concatMap } from 'rxjs/operators';
+import {
+  map,
+  tap,
+  take,
+  switchMap,
+  concatMap,
+  shareReplay
+} from 'rxjs/operators';
 import { User } from '../models/user.model';
 import { Roster } from '../models/roster.model';
 import { TeamMatchup } from '../models/team-matchup';
@@ -21,42 +28,14 @@ export class StandingsComponent implements OnInit {
   matchupsUrl =
     'https://api.sleeper.app/v1/league/468987145315414016/matchups/';
   users: Observable<User[]>;
-  weekOneMatchups: Observable<any>;
   userDict: Map<number, User> = new Map<number, User>();
+  loading = true;
+
+  weeklyStandings: Owner[][] = [];
 
   owners: Observable<Owner[]>;
 
   constructor(private http: HttpClient) {}
-
-  // getWeekMatchup(week: number): void {
-  //   if (week > this.completedWeeks) {
-  //     return;
-  //   }
-  //   this.http
-  //     .get(this.matchupsUrl + week)
-  //     .pipe(
-  //       take(1),
-  //       map(
-  //         (data: string) => JSON.parse(JSON.stringify(data)) as TeamMatchup[]
-  //       ),
-  //       map(teams => teams.sort((a, b) => b.points - a.points))
-  //     )
-  //     .subscribe(teams => {
-  //       let j = 0;
-  //       teams.forEach((team: TeamMatchup) => {
-  //         const userName = this.userDict[team.roster_id].display_name;
-  //         this.owners.find(owner => owner.user === userName).wins += 9 - j;
-  //         this.owners.find(owner => owner.user === userName).losses += j;
-  //         this.owners.find(owner => owner.user === userName).ties += 0;
-  //         this.owners.find(
-  //           owner => owner.user === userName
-  //         ).name = this.userDict[team.roster_id].metadata.team_name;
-  //         j += 1;
-  //       });
-
-  //       this.getWeekMatchup(week + 1);
-  //     });
-  // }
 
   ngOnInit() {
     this.users = this.http.get(this.usersUrl).pipe(
@@ -86,8 +65,12 @@ export class StandingsComponent implements OnInit {
             1
         );
       }),
-      switchMap(([users, rosters]) => {
+      switchMap(() => {
         const standings: Owner[] = [];
+
+        let loadingCounter = 0;
+
+        this.loading = true;
 
         return from(this.completedWeeks).pipe(
           concatMap(weekNumber => this.http.get(this.matchupsUrl + weekNumber)),
@@ -117,36 +100,47 @@ export class StandingsComponent implements OnInit {
               }
               j += 1;
             });
-            return standings;
+
+            const previousWeek = this.weeklyStandings[
+              this.weeklyStandings.length - 1
+            ];
+
+            const sortedStandings = [
+              ...standings
+                .sort((a, b) =>
+                  a.wins > b.wins ? -1 : a.wins < b.wins ? 1 : 0
+                )
+                .map((owner, index) => {
+                  return {
+                    ...owner,
+                    weeklyChange:
+                      previousWeek != null
+                        ? previousWeek.findIndex(o => o.user === owner.user) -
+                            index !==
+                          0
+                          ? previousWeek.findIndex(o => o.user === owner.user) -
+                            index
+                          : null
+                        : null
+                  };
+                })
+            ];
+
+            this.weeklyStandings.push(
+              JSON.parse(JSON.stringify(sortedStandings))
+            );
+            console.log(sortedStandings);
+
+            if (loadingCounter >= this.completedWeeks.length - 1) {
+              this.loading = false;
+            }
+
+            loadingCounter += 1;
+
+            return sortedStandings;
           })
         );
-      }),
-      map(standings => [
-        ...standings.sort((a, b) =>
-          a.wins > b.wins ? -1 : a.wins < b.wins ? 1 : 0
-        )
-      ])
+      })
     );
   }
-
-  // this.weekOneMatchups = this.http.get(this.matchupsUrl + 1).pipe(
-  //   take(1),
-  //   map((data: string) => JSON.parse(JSON.stringify(data)) as TeamMatchup[]),
-  //   map(teams => teams.sort((a, b) => b.points - a.points)),
-  //   tap(teams => {
-  //     console.log(teams);
-  //     let i = 0;
-  //     teams.forEach((team: TeamMatchup) => {
-  //       this.owners.push({
-  //         user: this.userDict[team.roster_id].display_name,
-  //         wins: 9 - i,
-  //         losses: i,
-  //         ties: 0,
-  //         name: this.userDict[team.roster_id].metadata.team_name
-  //       });
-  //       i += 1;
-  //     });
-  //   }),
-  //   tap(x => console.log(this.owners))
-  // );
 }
