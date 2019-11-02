@@ -13,6 +13,8 @@ import { StandingsComponent } from './standings/standings.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { HttpClientModule } from '@angular/common/http';
+import { NgxsModule } from '@ngxs/store';
+import { FantasyState } from './fantasy-store/fantasy.state';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { HttpClientModule } from '@angular/common/http';
     NavBarComponent
   ],
   imports: [
+    NgxsModule.forRoot([]),
+    NgxsModule.forFeature([FantasyState]),
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
