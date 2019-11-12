@@ -1,18 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { MediaObserver } from '@angular/flex-layout';
-import { Observable, combineLatest } from 'rxjs';
-import { Owner } from 'src/app/models/owner.model';
-import { Select } from '@ngxs/store';
-import { filter, switchMap, map } from 'rxjs/operators';
-import { ScoringSettings } from 'src/app/models/scoring-settings.model';
-import _ from 'lodash';
-import { FantasyService } from 'src/app/fantasy.service';
-import { User } from 'src/app/models/user.model';
+import { Component, OnInit } from "@angular/core";
+import { MediaObserver } from "@angular/flex-layout";
+import { Observable, combineLatest } from "rxjs";
+import { Owner } from "src/app/models/owner.model";
+import { Select } from "@ngxs/store";
+import { filter, switchMap, map } from "rxjs/operators";
+import { ScoringSettings } from "src/app/models/scoring-settings.model";
+import _ from "lodash";
+import { FantasyService } from "src/app/fantasy.service";
+import { User } from "src/app/models/user.model";
 
 @Component({
-  selector: 'app-live-scoring',
-  templateUrl: './live-scoring.component.html',
-  styleUrls: ['./live-scoring.component.scss']
+  selector: "app-live-scoring",
+  templateUrl: "./live-scoring.component.html",
+  styleUrls: ["./live-scoring.component.scss"]
 })
 export class LiveScoringComponent implements OnInit {
   columns: string[];
@@ -38,18 +38,18 @@ export class LiveScoringComponent implements OnInit {
       )
       .subscribe(value => {
         this.columns =
-          value.mqAlias === 'xs' || value.mqAlias === 'sm'
-            ? ['user', 'team', 'weeklyPoints', 'weeklyPlayersRemaining']
-            : ['team', 'weeklyPoints', 'weeklyPlayersRemaining'];
+          value.mqAlias === "xs" || value.mqAlias === "sm"
+            ? ["user", "team", "weeklyPoints", "weeklyPlayersRemaining"]
+            : ["team", "weeklyPoints", "weeklyPlayersRemaining"];
       });
 
     this.liveScoring = this.isMidWeek.pipe(
       filter(isMidweek => isMidweek),
       switchMap(() => this.week),
-      switchMap(weekNumber =>
+      switchMap(currentWeek =>
         combineLatest([
-          this.fantasyService.getWeeklyStats(weekNumber),
-          this.fantasyService.getMatchups(weekNumber),
+          this.fantasyService.getWeeklyStats(currentWeek),
+          this.fantasyService.getMatchups(currentWeek),
           this.fantasyService.getLeague(),
           this.userDict
         ])

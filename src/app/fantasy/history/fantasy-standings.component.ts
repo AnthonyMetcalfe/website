@@ -1,24 +1,24 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { combineLatest, Observable, of, from } from 'rxjs';
-import { map, tap, take, switchMap, concatMap, filter } from 'rxjs/operators';
-import { User } from '../../models/user.model';
-import { Roster } from '../../models/roster.model';
-import { TeamMatchup } from '../../models/team-matchup';
-import { Owner } from '../../models/owner.model';
-import _, { Dictionary } from 'lodash';
-import { ScoringSettings } from '../../models/scoring-settings.model';
-import { FantasyService } from '../../fantasy.service';
-import { PlayerStats } from '../../models/player-stats.model';
-import moment from 'moment';
-import { Player } from '../../models/player.model';
-import { Select, Store } from '@ngxs/store';
-import { LoadFantasyInformation } from '../../fantasy-store/fantasy.action';
+import { Component, OnInit } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { combineLatest, Observable, of, from } from "rxjs";
+import { map, tap, take, switchMap, concatMap, filter } from "rxjs/operators";
+import { User } from "../../models/user.model";
+import { Roster } from "../../models/roster.model";
+import { TeamMatchup } from "../../models/team-matchup";
+import { Owner } from "../../models/owner.model";
+import _, { Dictionary } from "lodash";
+import { ScoringSettings } from "../../models/scoring-settings.model";
+import { FantasyService } from "../../fantasy.service";
+import { PlayerStats } from "../../models/player-stats.model";
+import moment from "moment";
+import { Player } from "../../models/player.model";
+import { Select, Store } from "@ngxs/store";
+import { LoadFantasyInformation } from "../../fantasy-store/fantasy.action";
 
 @Component({
-  selector: 'app-fantasy-standings',
-  templateUrl: './fantasy-standings.component.html',
-  styleUrls: ['./fantasy-standings.component.scss']
+  selector: "app-fantasy-standings",
+  templateUrl: "./fantasy-standings.component.html",
+  styleUrls: ["./fantasy-standings.component.scss"]
 })
 export class FantasyStandingsComponent implements OnInit {
   completedWeeks: number[];
@@ -65,7 +65,9 @@ export class FantasyStandingsComponent implements OnInit {
         this.loading = true;
 
         return from(this.completedWeeks).pipe(
-          concatMap(weekNumber => this.fantasyService.getMatchups(weekNumber)),
+          concatMap(weekNumber =>
+            this.fantasyService.getPreviousMatchups(weekNumber)
+          ),
           map(teams => teams.sort((a, b) => b.points - a.points)),
           map((teams: TeamMatchup[]) => {
             let j = 0;
