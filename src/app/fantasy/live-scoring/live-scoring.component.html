@@ -1,0 +1,38 @@
+<table mat-table class="table table-condensed" [dataSource]="liveScoring">
+  <ng-container matColumnDef="user">
+    <th mat-header-cell *matHeaderCellDef>User</th>
+    <td mat-cell *matCellDef="let owner">{{ owner.user }}</td>
+  </ng-container>
+  <ng-container matColumnDef="team">
+    <th mat-header-cell *matHeaderCellDef>Team</th>
+    <td mat-cell *matCellDef="let owner">{{ owner.name }}</td>
+  </ng-container>
+  <ng-container matColumnDef="weeklyPoints">
+    <th mat-header-cell *matHeaderCellDef>Score</th>
+    <td mat-cell *matCellDef="let owner">
+      {{ owner.weeklyPoints | number: "1.2-2" }}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="weeklyPlayersRemaining">
+    <th mat-header-cell *matHeaderCellDef>Players Remaining</th>
+    <td mat-cell *matCellDef="let owner" class="right-align">
+      {{ owner.weeklyPlayersRemaining }}
+    </td>
+  </ng-container>
+  <tr
+    mat-header-row
+    *matHeaderRowDef="[
+      'user',
+      'team',
+      'weeklyPoints',
+      'weeklyPlayersRemaining'
+    ]"
+  ></tr>
+  <tr
+    mat-row
+    *matRowDef="
+      let row;
+      columns: ['user', 'team', 'weeklyPoints', 'weeklyPlayersRemaining']
+    "
+  ></tr>
+</table>

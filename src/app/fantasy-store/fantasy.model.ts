@@ -10,4 +10,5 @@ export interface FantasyStateModel {
   players: Map<string, Player>;
   isMidWeek: boolean;
   week: number;
+  userDict: Map<number, User>;
 }

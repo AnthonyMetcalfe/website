@@ -1,7 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { SatPopoverModule } from '@ncstate/sat-popover';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -15,25 +17,56 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxsModule } from '@ngxs/store';
 import { FantasyState } from './fantasy-store/fantasy.state';
+import { FantasyComponent } from './fantasy/fantasy.component';
+import { FantasyStandingsComponent } from './fantasy/history/fantasy-standings.component';
+import { Routes, RouterModule } from '@angular/router';
+import { LiveScoringComponent } from './fantasy/live-scoring/live-scoring.component';
+
+export const routes: Routes = [
+  {
+    path: '',
+    children: [
+      {
+        path: 'fantasy',
+        component: FantasyComponent,
+        children: [
+          { path: 'standings', component: FantasyStandingsComponent },
+          { path: 'live-scoring', component: LiveScoringComponent }
+        ]
+      },
+      {
+        path: '**',
+        redirectTo: '/fantasy/standings',
+        pathMatch: 'full'
+      }
+    ]
+  }
+];
 
 @NgModule({
   declarations: [
     AppComponent,
     StandingsComponent,
     HomepageComponent,
-    NavBarComponent
+    NavBarComponent,
+    FantasyComponent,
+    FantasyStandingsComponent,
+    LiveScoringComponent
   ],
   imports: [
     NgxsModule.forRoot([]),
     NgxsModule.forFeature([FantasyState]),
     BrowserModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
+    FlexLayoutModule,
     HttpClientModule,
     MatButtonModule,
+    MatTooltipModule,
     MatIconModule,
     MatTabsModule,
-    MatTableModule
+    MatTableModule,
+    SatPopoverModule,
+    RouterModule.forRoot(routes, { useHash: true })
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,25 @@
+table {
+  width: 100%;
+}
+@media only screen and (max-width: 600px) {
+  .mat-tab-group {
+    ::ng-deep .mat-tab-header {
+      .mat-tab-header-pagination {
+        display: none;
+        color: hotpink;
+      }
+      .mat-tab-label-container {
+        -webkit-overflow-scrolling: touch;
+        overflow: scroll;
+        &::-webkit-scrollbar {
+          display: none;
+          width: 0 !important;
+          background: transparent;
+        }
+      }
+    }
+  }
+  td {
+    padding: 4px !important;
+  }
+}

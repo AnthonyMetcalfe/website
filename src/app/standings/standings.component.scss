@@ -1,628 +1,628 @@
-@import "~@angular/material/theming";
-
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-.table {
-  width: 100%;
-  max-width: 100%;
-  margin-bottom: 2rem;
-  background-color: #ffffff;
-
-  > thead,
-  > tbody,
-  > tfoot {
-    > tr {
-      outline: none;
-
-      > th,
-      > td {
-        text-align: left;
-        padding: 0.8rem;
-        vertical-align: middle;
-        border-top: 0;
-        outline: none;
-
-        &.team-logo {
-          width: 30px;
-
-          img {
-            height: 30px;
-            margin: -10px 0 -10px 0;
-            width: 30px;
-          }
-        }
-
-        img.team-logo {
-          height: 30px;
-          margin: -10px 4px -10px 0;
-          width: 30px;
-        }
-      }
-    }
-  }
-
-  > thead > tr > th {
-    font-size: 12px;
-    font-weight: bold;
-    color: rgba(0, 0, 0, 0.54);
-    vertical-align: bottom;
-
-    &.mat-table-sticky:after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 100%;
-      border-bottom: 2px solid rgba(0, 0, 0, 0.12);
-    }
-
-    &.mat-header-cell {
-      button.mat-sort-header-button {
-        border-color: transparent;
-        border-style: solid;
-        border-width: 1px;
-      }
-    }
-
-    &:not(.mat-table-sticky) {
-      border-bottom: 2px solid rgba(0, 0, 0, 0.12);
-    }
-  }
-
-  > tbody > tr > td {
-    &.mat-table-sticky:after {
-      content: "";
-      position: absolute;
-      right: 0;
-      top: 0;
-      height: 100%;
-      border-right: 1px solid rgba(0, 0, 0, 0.12);
-    }
-  }
-
-  > caption + thead,
-  > colgroup + thead,
-  > thead:first-child {
-    > tr:first-child {
-      > th,
-      > td {
-        border-top: 0;
-      }
-    }
-  }
-
-  > tbody + tbody {
-    border-top: 1px solid rgba(0, 0, 0, 0.12);
-  }
-
-  .no-border {
-    border: 0;
-  }
-
-  tr.row-total {
-    td,
-    th {
-      background-color: mat-color($mat-blue-grey, 50);
-      color: mat-color($mat-blue-grey, 700);
-      font-weight: bold;
-    }
-  }
-
-  tr.row-header {
-    td,
-    th {
-      color: rgba(0, 0, 0, 0.54);
-      font-weight: bold;
-      padding-top: 16px;
-      text-transform: uppercase;
-    }
-  }
-
-  th.divider,
-  td.divider {
-    border-left: 2px solid #bbbbbb;
-  }
-
-  tr.divider {
-    th,
-    td {
-      border-top: 2px solid #bbbbbb;
-    }
-  }
-
-  th.divider-thick,
-  td.divider-thick {
-    border-left: 3px solid #777777;
-  }
-
-  tr.divider-thick {
-    th,
-    td {
-      border-top: 3px solid #777777;
-    }
-  }
-
-  th.numeric,
-  td.numeric,
-  td.numeric.editable-cell input {
-    text-align: right;
-
-    .mat-sort-header-container {
-      flex-direction: row-reverse;
-    }
-  }
-
-  td.no-wrap {
-    max-width: 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    width: 100%;
-    word-break: normal;
-  }
-}
-
-.table-condensed,
-.table-condensed-tall {
-  > thead,
-  > tbody,
-  > tfoot {
-    > tr {
-      > th,
-      > td {
-        font-size: 12px;
-
-        .mat-button.mat-icon-button {
-          height: 18px;
-          line-height: 18px;
-          margin: 0;
-          min-height: 18px;
-          padding: 0;
-          width: 18px;
-        }
-
-        mat-icon.expand-toggle {
-          color: mat-color($mat-light-blue, 500);
-          height: 18px;
-          margin-top: -9px;
-          min-height: 18px;
-        }
-      }
-    }
-  }
-}
-
-.table-condensed {
-  > thead,
-  > tbody,
-  > tfoot {
-    > tr {
-      > th,
-      > td {
-        padding: 0.1rem 0.3rem 0.1rem 0.3rem;
-
-        .mat-sort-header-container {
-          margin: -0.1rem -0.3rem -0.1rem -0.3rem;
-          padding: 0.1rem 0.3rem 0 0.3rem;
-        }
-      }
-    }
-  }
-}
-
-.table-condensed-tall {
-  > thead,
-  > tbody,
-  > tfoot {
-    > tr {
-      > th,
-      > td {
-        padding: 0.3rem;
-      }
-    }
-  }
-}
-
-.table-bordered,
-.table-bordered-horizontal {
-  border: 0;
-
-  > thead > tr {
-    > th,
-    > td {
-      border: 0;
-    }
-  }
-
-  > thead > tr:not(:last-child) {
-    > th,
-    > td {
-      border-bottom: 1px solid #e0e0e0;
-    }
-  }
-
-  > tbody,
-  > tfoot {
-    > tr > td {
-      border: 0;
-      border-bottom: 1px solid #e0e0e0;
-    }
-  }
-}
-
-.table-bordered {
-  > tbody,
-  > tfoot {
-    > tr {
-      > th,
-      > td {
-        border-left: 1px solid #e0e0e0;
-
-        &:first-child {
-          border-left: 0;
-        }
-      }
-    }
-  }
-}
-
-.table-striped {
-  > tbody > tr:nth-child(odd) {
-    > td,
-    > th {
-      background-color: #f6f8f8;
-    }
-  }
-}
-
-.table-hover {
-  > tbody > tr:not(.row-header):not(.row-detail):hover > td {
-    background-color: #f6f8f8;
-  }
-}
-
-.table-hover-click {
-  > tbody > tr:not(.row-header):not(.row-detail):hover > td {
-    background-color: mat-color($mat-light-blue, 50);
-    cursor: pointer;
-  }
-}
-
-.table-hover-drag {
-  > tbody > tr:not(.row-header):not(.row-detail):hover > td {
-    background-color: mat-color($mat-light-blue, 50);
-    cursor: move;
-  }
-}
-
-.table {
-  tr {
-    td.editable-cell {
-      height: 1px;
-      padding: 0;
-
-      input {
-        border: none;
-        font-size: inherit;
-        height: 100%;
-        outline: none;
-        padding-left: 4px;
-        padding-right: 4px;
-        width: calc(100% - 8px);
-
-        &:focus {
-          border-bottom: 2px solid mat-color($mat-light-blue, 500);
-          margin-bottom: -2px;
-        }
-
-        &.ng-invalid:not([readonly]),
-        &.unsaved:not(:focus) {
-          border-bottom: 2px solid mat-color($mat-red, 500);
-          margin-bottom: -2px;
-        }
-      }
-
-      mat-select {
-        margin: 0;
-
-        .mat-select-value {
-          border-bottom-color: transparent;
-          padding-left: 4px;
-          padding-right: 4px;
-        }
-      }
-
-      mat-checkbox {
-        margin: 0 4px 0 4px;
-      }
-
-      &.editable-cell-textarea {
-        vertical-align: bottom;
-
-        textarea {
-          border: 0px;
-          font-size: inherit;
-          outline: none;
-          margin-bottom: -3px;
-          padding-left: 4px;
-          padding-right: 4px;
-          resize: none;
-          width: calc(100% - 8px);
-
-          &:focus {
-            border-bottom: 2px solid mat-color($mat-light-blue, 500);
-            margin-bottom: -5px;
-          }
-        }
-
-        &.divider textarea {
-          margin-left: 1px;
-          width: calc(100% - 10px);
-        }
-      }
-    }
-  }
-}
-
-mat-card .table {
-  margin-bottom: 0;
-
-  &:first-child {
-    border-top-left-radius: 2px;
-    border-top-right-radius: 2px;
-  }
-
-  &:last-child {
-    border-bottom-left-radius: 2px;
-    border-bottom-right-radius: 2px;
-  }
-
-  > thead,
-  > tbody,
-  > tfoot {
-    > tr {
-      > th,
-      > td {
-        &:first-child:not(.editable-cell) {
-          padding-left: 16px;
-
-          .mat-sort-header-container {
-            margin-left: -16px;
-            padding-left: 16px;
-          }
-        }
-
-        &:last-child:not(.editable-cell) {
-          padding-right: 16px;
-
-          .mat-sort-header-container {
-            margin-right: -16px;
-            padding-right: 16px;
-          }
-        }
-      }
-    }
-  }
-
-  .divider-row td {
-    background: mat-color($mat-blue-grey, 50);
-    border-bottom: 1px solid #e0e0e0;
-    border-left: none;
-    border-right: none;
-    border-top: 0;
-    box-shadow: inset 0 3px 1px -2px rgba(0, 0, 0, 0.2),
-      inset 0 2px 2px 0 rgba(0, 0, 0, 0.14),
-      inset 0 1px 5px 0 rgba(0, 0, 0, 0.12);
-    height: 16px;
-    position: relative;
-
-    span {
-      background: mat-color($mat-blue-grey, 50);
-      position: absolute;
-      top: 2px;
-      width: 5px;
-      height: calc(100% - 4px);
-
-      &:first-child {
-        left: -2px;
-      }
-
-      &:last-child {
-        right: -2px;
-      }
-    }
-  }
-}
-
-mat-card mat-toolbar.table-toolbar {
-  font-weight: normal;
-
-  button.mat-icon-button mat-icon {
-    color: rgba(0, 0, 0, 0.54);
-
-    &:hover {
-      color: mat-color($mat-light-blue, 500);
-    }
-  }
-
-  .mat-form-field {
-    margin-right: 8px;
-  }
-
-  .tc-datepicker {
-    width: 155px;
-  }
-}
-
-.table {
-  .mat-sort-header-container {
-    .mat-sort-header-arrow {
-      display: none;
-    }
-  }
-
-  th:not(.mat-sort-header-disabled) {
-    .mat-sort-header-container {
-      &:hover {
-        color: mat-color($mat-light-blue, 500);
-      }
-
-      &.mat-sort-header-sorted {
-        background-color: mat-color($mat-light-blue, 50);
-        border-bottom: 2px solid mat-color($mat-light-blue, 500);
-        color: mat-color($mat-light-blue, 500);
-        line-height: 18px;
-
-        .mat-sort-header-button {
-          margin-bottom: -1px;
-          padding-top: 1px;
-        }
-      }
-    }
-  }
-}
-
-.table {
-  .row-detail > td {
-    background-color: #f7f7f7;
-    box-shadow: inset 0px 6px 15px -10px rgba(0, 0, 0, 0.5),
-      inset 0px -6px 15px -10px rgba(0, 0, 0, 0.5);
-
-    &.row-detail-cell-collapsed {
-      border: none;
-      margin: 0;
-      padding: 0;
-    }
-
-    > div {
-      overflow: hidden;
-    }
-  }
-}
-
-.dark-theme {
-  .table {
-    background-color: transparent;
-    color: #ffffff;
-
-    > thead > tr > th {
-      border-bottom-color: rgba(255, 255, 255, 0.12);
-      color: rgba(255, 255, 255, 0.54);
-    }
-
-    > tbody + tbody {
-      border-top-color: rgba(255, 255, 255, 0.12);
-    }
-
-    tr.row-header {
-      td,
-      th {
-        color: rgba(0, 0, 0, 0.54);
-      }
-    }
-
-    tr.row-total {
-      td,
-      th {
-        background-color: #212121;
-        color: #dddddd;
-      }
-    }
-
-    th.divider,
-    td.divider {
-      border-left-color: rgba(255, 255, 255, 0.12);
-    }
-
-    tr.divider {
-      th,
-      td {
-        border-top-color: rgba(255, 255, 255, 0.12);
-      }
-    }
-
-    th.divider-thick,
-    td.divider-thick {
-      border-left-color: rgba(255, 255, 255, 0.3);
-    }
-
-    tr.divider-thick {
-      th,
-      td {
-        border-top-color: rgba(255, 255, 255, 0.3);
-      }
-    }
-
-    .row-detail > td {
-      background-color: #444444;
-    }
-  }
-
-  .table-bordered,
-  .table-bordered-horizontal {
-    > thead,
-    > tbody,
-    > tfoot {
-      > tr {
-        > th,
-        > td {
-          border-bottom-color: rgba(255, 255, 255, 0.12);
-        }
-      }
-    }
-  }
-
-  .table-bordered {
-    > tbody,
-    > tfoot {
-      > tr {
-        > th,
-        > td {
-          border-left-color: rgba(255, 255, 255, 0.12);
-        }
-      }
-    }
-  }
-
-  .table-striped {
-    > tbody > tr:nth-child(odd) {
-      > td,
-      > th {
-        background-color: rgba(255, 255, 255, 0.12);
-      }
-    }
-  }
-
-  .table-hover {
-    > tbody > tr:not(.row-header):not(.row-detail):hover > td {
-      background-color: rgba(255, 255, 255, 0.2) !important;
-    }
-  }
-
-  .table-hover-click,
-  .table-hover-drag {
-    > tbody > tr:not(.row-header):not(.row-detail):hover > td {
-      background-color: mat-color($mat-light-blue, 700);
-    }
-  }
-
-  .table {
-    th:not(.mat-sort-header-disabled) {
-      .mat-sort-header-container {
-        &.mat-sort-header-sorted {
-          background-color: transparent;
-        }
-      }
-    }
-  }
-}
-
-.negative {
-  color: red;
-}
-.positive {
-  color: green;
-}
+// @import "~@angular/material/theming";
+
+// table {
+//   border-collapse: collapse;
+//   border-spacing: 0;
+// }
+
+// .table {
+//   width: 100%;
+//   max-width: 100%;
+//   margin-bottom: 2rem;
+//   background-color: #ffffff;
+
+//   > thead,
+//   > tbody,
+//   > tfoot {
+//     > tr {
+//       outline: none;
+
+//       > th,
+//       > td {
+//         text-align: left;
+//         padding: 0.8rem;
+//         vertical-align: middle;
+//         border-top: 0;
+//         outline: none;
+
+//         &.team-logo {
+//           width: 30px;
+
+//           img {
+//             height: 30px;
+//             margin: -10px 0 -10px 0;
+//             width: 30px;
+//           }
+//         }
+
+//         img.team-logo {
+//           height: 30px;
+//           margin: -10px 4px -10px 0;
+//           width: 30px;
+//         }
+//       }
+//     }
+//   }
+
+//   > thead > tr > th {
+//     font-size: 12px;
+//     font-weight: bold;
+//     color: rgba(0, 0, 0, 0.54);
+//     vertical-align: bottom;
+
+//     &.mat-table-sticky:after {
+//       content: "";
+//       position: absolute;
+//       left: 0;
+//       bottom: 0;
+//       width: 100%;
+//       border-bottom: 2px solid rgba(0, 0, 0, 0.12);
+//     }
+
+//     &.mat-header-cell {
+//       button.mat-sort-header-button {
+//         border-color: transparent;
+//         border-style: solid;
+//         border-width: 1px;
+//       }
+//     }
+
+//     &:not(.mat-table-sticky) {
+//       border-bottom: 2px solid rgba(0, 0, 0, 0.12);
+//     }
+//   }
+
+//   > tbody > tr > td {
+//     &.mat-table-sticky:after {
+//       content: "";
+//       position: absolute;
+//       right: 0;
+//       top: 0;
+//       height: 100%;
+//       border-right: 1px solid rgba(0, 0, 0, 0.12);
+//     }
+//   }
+
+//   > caption + thead,
+//   > colgroup + thead,
+//   > thead:first-child {
+//     > tr:first-child {
+//       > th,
+//       > td {
+//         border-top: 0;
+//       }
+//     }
+//   }
+
+//   > tbody + tbody {
+//     border-top: 1px solid rgba(0, 0, 0, 0.12);
+//   }
+
+//   .no-border {
+//     border: 0;
+//   }
+
+//   tr.row-total {
+//     td,
+//     th {
+//       background-color: mat-color($mat-blue-grey, 50);
+//       color: mat-color($mat-blue-grey, 700);
+//       font-weight: bold;
+//     }
+//   }
+
+//   tr.row-header {
+//     td,
+//     th {
+//       color: rgba(0, 0, 0, 0.54);
+//       font-weight: bold;
+//       padding-top: 16px;
+//       text-transform: uppercase;
+//     }
+//   }
+
+//   th.divider,
+//   td.divider {
+//     border-left: 2px solid #bbbbbb;
+//   }
+
+//   tr.divider {
+//     th,
+//     td {
+//       border-top: 2px solid #bbbbbb;
+//     }
+//   }
+
+//   th.divider-thick,
+//   td.divider-thick {
+//     border-left: 3px solid #777777;
+//   }
+
+//   tr.divider-thick {
+//     th,
+//     td {
+//       border-top: 3px solid #777777;
+//     }
+//   }
+
+//   th.numeric,
+//   td.numeric,
+//   td.numeric.editable-cell input {
+//     text-align: right;
+
+//     .mat-sort-header-container {
+//       flex-direction: row-reverse;
+//     }
+//   }
+
+//   td.no-wrap {
+//     max-width: 0;
+//     overflow: hidden;
+//     text-overflow: ellipsis;
+//     white-space: nowrap;
+//     width: 100%;
+//     word-break: normal;
+//   }
+// }
+
+// .table-condensed,
+// .table-condensed-tall {
+//   > thead,
+//   > tbody,
+//   > tfoot {
+//     > tr {
+//       > th,
+//       > td {
+//         font-size: 12px;
+
+//         .mat-button.mat-icon-button {
+//           height: 18px;
+//           line-height: 18px;
+//           margin: 0;
+//           min-height: 18px;
+//           padding: 0;
+//           width: 18px;
+//         }
+
+//         mat-icon.expand-toggle {
+//           color: mat-color($mat-light-blue, 500);
+//           height: 18px;
+//           margin-top: -9px;
+//           min-height: 18px;
+//         }
+//       }
+//     }
+//   }
+// }
+
+// .table-condensed {
+//   > thead,
+//   > tbody,
+//   > tfoot {
+//     > tr {
+//       > th,
+//       > td {
+//         padding: 0.1rem 0.3rem 0.1rem 0.3rem;
+
+//         .mat-sort-header-container {
+//           margin: -0.1rem -0.3rem -0.1rem -0.3rem;
+//           padding: 0.1rem 0.3rem 0 0.3rem;
+//         }
+//       }
+//     }
+//   }
+// }
+
+// .table-condensed-tall {
+//   > thead,
+//   > tbody,
+//   > tfoot {
+//     > tr {
+//       > th,
+//       > td {
+//         padding: 0.3rem;
+//       }
+//     }
+//   }
+// }
+
+// .table-bordered,
+// .table-bordered-horizontal {
+//   border: 0;
+
+//   > thead > tr {
+//     > th,
+//     > td {
+//       border: 0;
+//     }
+//   }
+
+//   > thead > tr:not(:last-child) {
+//     > th,
+//     > td {
+//       border-bottom: 1px solid #e0e0e0;
+//     }
+//   }
+
+//   > tbody,
+//   > tfoot {
+//     > tr > td {
+//       border: 0;
+//       border-bottom: 1px solid #e0e0e0;
+//     }
+//   }
+// }
+
+// .table-bordered {
+//   > tbody,
+//   > tfoot {
+//     > tr {
+//       > th,
+//       > td {
+//         border-left: 1px solid #e0e0e0;
+
+//         &:first-child {
+//           border-left: 0;
+//         }
+//       }
+//     }
+//   }
+// }
+
+// .table-striped {
+//   > tbody > tr:nth-child(odd) {
+//     > td,
+//     > th {
+//       background-color: #f6f8f8;
+//     }
+//   }
+// }
+
+// .table-hover {
+//   > tbody > tr:not(.row-header):not(.row-detail):hover > td {
+//     background-color: #f6f8f8;
+//   }
+// }
+
+// .table-hover-click {
+//   > tbody > tr:not(.row-header):not(.row-detail):hover > td {
+//     background-color: mat-color($mat-light-blue, 50);
+//     cursor: pointer;
+//   }
+// }
+
+// .table-hover-drag {
+//   > tbody > tr:not(.row-header):not(.row-detail):hover > td {
+//     background-color: mat-color($mat-light-blue, 50);
+//     cursor: move;
+//   }
+// }
+
+// .table {
+//   tr {
+//     td.editable-cell {
+//       height: 1px;
+//       padding: 0;
+
+//       input {
+//         border: none;
+//         font-size: inherit;
+//         height: 100%;
+//         outline: none;
+//         padding-left: 4px;
+//         padding-right: 4px;
+//         width: calc(100% - 8px);
+
+//         &:focus {
+//           border-bottom: 2px solid mat-color($mat-light-blue, 500);
+//           margin-bottom: -2px;
+//         }
+
+//         &.ng-invalid:not([readonly]),
+//         &.unsaved:not(:focus) {
+//           border-bottom: 2px solid mat-color($mat-red, 500);
+//           margin-bottom: -2px;
+//         }
+//       }
+
+//       mat-select {
+//         margin: 0;
+
+//         .mat-select-value {
+//           border-bottom-color: transparent;
+//           padding-left: 4px;
+//           padding-right: 4px;
+//         }
+//       }
+
+//       mat-checkbox {
+//         margin: 0 4px 0 4px;
+//       }
+
+//       &.editable-cell-textarea {
+//         vertical-align: bottom;
+
+//         textarea {
+//           border: 0px;
+//           font-size: inherit;
+//           outline: none;
+//           margin-bottom: -3px;
+//           padding-left: 4px;
+//           padding-right: 4px;
+//           resize: none;
+//           width: calc(100% - 8px);
+
+//           &:focus {
+//             border-bottom: 2px solid mat-color($mat-light-blue, 500);
+//             margin-bottom: -5px;
+//           }
+//         }
+
+//         &.divider textarea {
+//           margin-left: 1px;
+//           width: calc(100% - 10px);
+//         }
+//       }
+//     }
+//   }
+// }
+
+// mat-card .table {
+//   margin-bottom: 0;
+
+//   &:first-child {
+//     border-top-left-radius: 2px;
+//     border-top-right-radius: 2px;
+//   }
+
+//   &:last-child {
+//     border-bottom-left-radius: 2px;
+//     border-bottom-right-radius: 2px;
+//   }
+
+//   > thead,
+//   > tbody,
+//   > tfoot {
+//     > tr {
+//       > th,
+//       > td {
+//         &:first-child:not(.editable-cell) {
+//           padding-left: 16px;
+
+//           .mat-sort-header-container {
+//             margin-left: -16px;
+//             padding-left: 16px;
+//           }
+//         }
+
+//         &:last-child:not(.editable-cell) {
+//           padding-right: 16px;
+
+//           .mat-sort-header-container {
+//             margin-right: -16px;
+//             padding-right: 16px;
+//           }
+//         }
+//       }
+//     }
+//   }
+
+//   .divider-row td {
+//     background: mat-color($mat-blue-grey, 50);
+//     border-bottom: 1px solid #e0e0e0;
+//     border-left: none;
+//     border-right: none;
+//     border-top: 0;
+//     box-shadow: inset 0 3px 1px -2px rgba(0, 0, 0, 0.2),
+//       inset 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+//       inset 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+//     height: 16px;
+//     position: relative;
+
+//     span {
+//       background: mat-color($mat-blue-grey, 50);
+//       position: absolute;
+//       top: 2px;
+//       width: 5px;
+//       height: calc(100% - 4px);
+
+//       &:first-child {
+//         left: -2px;
+//       }
+
+//       &:last-child {
+//         right: -2px;
+//       }
+//     }
+//   }
+// }
+
+// mat-card mat-toolbar.table-toolbar {
+//   font-weight: normal;
+
+//   button.mat-icon-button mat-icon {
+//     color: rgba(0, 0, 0, 0.54);
+
+//     &:hover {
+//       color: mat-color($mat-light-blue, 500);
+//     }
+//   }
+
+//   .mat-form-field {
+//     margin-right: 8px;
+//   }
+
+//   .tc-datepicker {
+//     width: 155px;
+//   }
+// }
+
+// .table {
+//   .mat-sort-header-container {
+//     .mat-sort-header-arrow {
+//       display: none;
+//     }
+//   }
+
+//   th:not(.mat-sort-header-disabled) {
+//     .mat-sort-header-container {
+//       &:hover {
+//         color: mat-color($mat-light-blue, 500);
+//       }
+
+//       &.mat-sort-header-sorted {
+//         background-color: mat-color($mat-light-blue, 50);
+//         border-bottom: 2px solid mat-color($mat-light-blue, 500);
+//         color: mat-color($mat-light-blue, 500);
+//         line-height: 18px;
+
+//         .mat-sort-header-button {
+//           margin-bottom: -1px;
+//           padding-top: 1px;
+//         }
+//       }
+//     }
+//   }
+// }
+
+// .table {
+//   .row-detail > td {
+//     background-color: #f7f7f7;
+//     box-shadow: inset 0px 6px 15px -10px rgba(0, 0, 0, 0.5),
+//       inset 0px -6px 15px -10px rgba(0, 0, 0, 0.5);
+
+//     &.row-detail-cell-collapsed {
+//       border: none;
+//       margin: 0;
+//       padding: 0;
+//     }
+
+//     > div {
+//       overflow: hidden;
+//     }
+//   }
+// }
+
+// .dark-theme {
+//   .table {
+//     background-color: transparent;
+//     color: #ffffff;
+
+//     > thead > tr > th {
+//       border-bottom-color: rgba(255, 255, 255, 0.12);
+//       color: rgba(255, 255, 255, 0.54);
+//     }
+
+//     > tbody + tbody {
+//       border-top-color: rgba(255, 255, 255, 0.12);
+//     }
+
+//     tr.row-header {
+//       td,
+//       th {
+//         color: rgba(0, 0, 0, 0.54);
+//       }
+//     }
+
+//     tr.row-total {
+//       td,
+//       th {
+//         background-color: #212121;
+//         color: #dddddd;
+//       }
+//     }
+
+//     th.divider,
+//     td.divider {
+//       border-left-color: rgba(255, 255, 255, 0.12);
+//     }
+
+//     tr.divider {
+//       th,
+//       td {
+//         border-top-color: rgba(255, 255, 255, 0.12);
+//       }
+//     }
+
+//     th.divider-thick,
+//     td.divider-thick {
+//       border-left-color: rgba(255, 255, 255, 0.3);
+//     }
+
+//     tr.divider-thick {
+//       th,
+//       td {
+//         border-top-color: rgba(255, 255, 255, 0.3);
+//       }
+//     }
+
+//     .row-detail > td {
+//       background-color: #444444;
+//     }
+//   }
+
+//   .table-bordered,
+//   .table-bordered-horizontal {
+//     > thead,
+//     > tbody,
+//     > tfoot {
+//       > tr {
+//         > th,
+//         > td {
+//           border-bottom-color: rgba(255, 255, 255, 0.12);
+//         }
+//       }
+//     }
+//   }
+
+//   .table-bordered {
+//     > tbody,
+//     > tfoot {
+//       > tr {
+//         > th,
+//         > td {
+//           border-left-color: rgba(255, 255, 255, 0.12);
+//         }
+//       }
+//     }
+//   }
+
+//   .table-striped {
+//     > tbody > tr:nth-child(odd) {
+//       > td,
+//       > th {
+//         background-color: rgba(255, 255, 255, 0.12);
+//       }
+//     }
+//   }
+
+//   .table-hover {
+//     > tbody > tr:not(.row-header):not(.row-detail):hover > td {
+//       background-color: rgba(255, 255, 255, 0.2) !important;
+//     }
+//   }
+
+//   .table-hover-click,
+//   .table-hover-drag {
+//     > tbody > tr:not(.row-header):not(.row-detail):hover > td {
+//       background-color: mat-color($mat-light-blue, 700);
+//     }
+//   }
+
+//   .table {
+//     th:not(.mat-sort-header-disabled) {
+//       .mat-sort-header-container {
+//         &.mat-sort-header-sorted {
+//           background-color: transparent;
+//         }
+//       }
+//     }
+//   }
+// }
+
+// .negative {
+//   color: red;
+// }
+// .positive {
+//   color: green;
+// }
