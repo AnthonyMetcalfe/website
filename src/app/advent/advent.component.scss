@@ -1,0 +1,19 @@
+.container {
+  &.mobile {
+    width: 95%;
+    margin-left: 2.5%;
+  }
+  margin-top: 8px;
+  &:not(.mobile) {
+    margin-left: 10%;
+    width: 80%;
+  }
+}
+
+img {
+  width: 100%;
+}
+
+.active {
+  cursor: pointer;
+}

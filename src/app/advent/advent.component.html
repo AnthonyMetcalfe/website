@@ -1,0 +1,10 @@
+<div class="container" ngClass.lt-md="mobile">
+  <mat-grid-list cols="6" gutterSize="8px" rowHeight="1:1">
+    <mat-grid-tile *ngFor="let day of days"
+      ><img
+        [class.active]="date >= day"
+        (click)="openImage(day)"
+        src="assets/advent_img/{{ day }}{{ day > date ? '_hidden' : '' }}.jpg"
+    /></mat-grid-tile>
+  </mat-grid-list>
+</div>

@@ -111,9 +111,13 @@ export class FantasyStandingsComponent implements OnInit {
 
             const sortedStandings = [
               ...standings
-                .sort((a, b) =>
-                  a.wins > b.wins ? -1 : a.wins < b.wins ? 1 : 0
-                )
+                .sort((a, b) => {
+                  const aRecord =
+                    (a.wins + 0.5 * a.ties) / (a.wins + a.losses + a.ties);
+                  const bRecord =
+                    (b.wins + 0.5 * b.ties) / (b.wins + b.losses + b.ties);
+                  return aRecord > bRecord ? -1 : aRecord < bRecord ? 1 : 0;
+                })
                 .map((owner, index) => {
                   return {
                     ...owner,
