@@ -38,7 +38,26 @@ export class AdventImagePageComponent implements OnInit {
     5: {
       title: "It's a me, Mario!",
       imageText:
-        "Much like Olivia is going to drop that bomb on Mario-me, I'm dropping the premise that each day will correlate to the number in favor of poorly photoshoped pictures of me."
+        "Much like Olivia is going to drop that bomb on Mario-me, I'm dropping the premise that each day will correlate to the number of the day. Instead, I'll have poorly photoshoped pictures of me for each day.."
+    },
+    6: {
+      title: "Meow",
+      imageText: "This one is pretty bad."
+    },
+    7: {
+      title: "Winter is Coming (after naptime).",
+      imageText:
+        "It's kind of hard to tell, but if you look very closely you will see that one of these horseriders doesn't belong."
+    },
+    8: {
+      title: "I'm sorry",
+      imageText:
+        "The best part about looking like that as a child is being able to poorly photoshop it onto Justin Bieber's body."
+    },
+    22: {
+      title: "Rata-twenty-two-uille",
+      imageText:
+        "Alfredo Linguini's neck is WAY too small to make any photoshop look realistic. Also, if you have a problem with that pun, please email me at howDareYou@anthonymetcalfe.com."
     }
   };
 
