@@ -38,7 +38,7 @@ export class AdventImagePageComponent implements OnInit {
     5: {
       title: "It's a me, Mario!",
       imageText:
-        "Much like Olivia is going to drop that bomb on Mario-me, I'm dropping the premise that each day will correlate to the number of the day. Instead, I'll have poorly photoshoped pictures of me for each day.."
+        "Much like Olivia is going to drop that bomb on Mario-me, I'm dropping the premise that each day will correlate to the number of the day. Instead, I'll have poorly photoshoped pictures of me for each day."
     },
     6: {
       title: "Meow",
@@ -53,6 +53,31 @@ export class AdventImagePageComponent implements OnInit {
       title: "I'm sorry",
       imageText:
         "The best part about looking like that as a child is being able to poorly photoshop it onto Justin Bieber's body."
+    },
+    9: {
+      title: "Rockstar Olivia",
+      imageText:
+        "After winning 2005's American Idol, Olivia was able to perform on stage next to Katy Perry. She performed a stunning rendition of Hotel California, Wonderwall, and Twinkle Twinkle Little Star"
+    },
+    10: {
+      title: "This picture is worth ~$2.3 million",
+      imageText:
+        "It's a little known fact that Billy the Kid was an avid croquet player (this is a real photo, one of two confirmed Billy the kid photos in existence). Even less known were two of the members of his posse, Anthony the child and Olivia the youngster. Anthony and Olivia were killed by Billy shortly after this image was taken due to a thorough croquet shellacking."
+    },
+    11: {
+      title: "Jesus and his 13 disciples.",
+      imageText:
+        'The unidentified man (right, seen eating corn) was kicked out shortly after for asking whether Jesus\'s body was "gluten free", or at least made with italian flour.'
+    },
+    12: {
+      title: "A shy conehead",
+      imageText:
+        "If gemoetry class taught me anything, it's that Olivia's head has a volume of 1/3 * pi * r^2 * h. Just kidding, I had to google that. Some argue that it's actually a normal head just with a bun of hair doing a great job of acting, but I'm not a conspiracy theorist."
+    },
+    13: {
+      title: "Eye Spy",
+      imageText:
+        "One of these roller derby competitors does not belong. Can you spot him?"
     },
     22: {
       title: "Rata-twenty-two-uille",
