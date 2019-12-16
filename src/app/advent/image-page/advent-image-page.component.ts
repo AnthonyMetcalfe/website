@@ -79,6 +79,26 @@ export class AdventImagePageComponent implements OnInit {
       imageText:
         "One of these roller derby competitors does not belong. Can you spot him?"
     },
+    14: {
+      title: "Pi-irate",
+      imageText:
+        "What do you get when you try and calculate the circumference of a circle and get really angry with the constant you use to do so? See above for the answer."
+    },
+    15: {
+      title: "Four Weddings and an Umbrella",
+      imageText:
+        "Sometimes, all you need to find true love is 3 weddings, a funeral, your own failed wedding, and a guy decked out in an Eagan High School tennis uniform holding an umbrella. My apologies to anyone who just got the plot to the 1994 movie Four Weddings and a Funeral ruined for them."
+    },
+    16: {
+      title: "Ray Bans: BOGO",
+      imageText:
+        "This has to be the lowest-effort one yet. We're only 8 days to go. Almost at the finish line!"
+    },
+    17: {
+      title: "Mount Everest Segway Tours: $50",
+      imageText:
+        "Some people choose to struggle their way up the mountain for a sense of accomplishment. Others take the more touristy route and rent a segway. Shown attire not recommended. Don't try this at home (mostly because if you did, you'd be nowhere near Mount Everest, and frankly you'd look a bit embarrassing."
+    },
     22: {
       title: "Rata-twenty-two-uille",
       imageText:
