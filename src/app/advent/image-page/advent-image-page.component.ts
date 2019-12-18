@@ -97,7 +97,20 @@ export class AdventImagePageComponent implements OnInit {
     17: {
       title: "Mount Everest Segway Tours: $50",
       imageText:
-        "Some people choose to struggle their way up the mountain for a sense of accomplishment. Others take the more touristy route and rent a segway. Shown attire not recommended. Don't try this at home (mostly because if you did, you'd be nowhere near Mount Everest, and frankly you'd look a bit embarrassing."
+        "Some people choose to struggle their way up the mountain for a sense of accomplishment. Others take the more touristy route and rent a segway. Shown attire not recommended. Don't try this at home (mostly because if you did, you'd be nowhere near Mount Everest, and frankly you'd look a bit embarrassing.)"
+    },
+    18: {
+      title: "Where's the Bunny?",
+      imageText: "That's a really bad \"Bugs Bunny\" joke. You're welcome."
+    },
+    19: {
+      title: "Blue Steel",
+      imageText:
+        "I'm pretty sure there's a lot more to life than being really, really, ridiculously good looking. And I plan on finding out what that is."
+    },
+    21: {
+      title: "Where's My Car?",
+      imageText: "I knew I should have pinned my parking spot in Google Maps."
     },
     22: {
       title: "Rata-twenty-two-uille",
