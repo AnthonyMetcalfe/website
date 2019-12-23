@@ -26,6 +26,7 @@ import { LiveScoringComponent } from "./fantasy/live-scoring/live-scoring.compon
 import { AdventComponent } from "./advent/advent.component";
 import { AdventImagePageComponent } from "./advent/image-page/advent-image-page.component";
 import { AdventImageExplainerDialogComponent } from "./advent/image-explainer-dialog/advent-image-explainer-dialog.component";
+import { OliviaComponent } from "./gifts/olivia.component";
 
 export const routes: Routes = [
   {
@@ -47,7 +48,8 @@ export const routes: Routes = [
         path: "advent",
         component: AdventComponent
       },
-      { path: "advent/:adventDay", component: AdventImagePageComponent }
+      { path: "advent/:adventDay", component: AdventImagePageComponent },
+      { path: "merry-christmas-olivia", component: OliviaComponent }
     ]
   }
 ];
@@ -60,6 +62,7 @@ export const routes: Routes = [
     AppComponent,
     StandingsComponent,
     HomepageComponent,
+    OliviaComponent,
     NavBarComponent,
     FantasyComponent,
     FantasyStandingsComponent,
