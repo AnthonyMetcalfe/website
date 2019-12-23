@@ -108,6 +108,10 @@ export class AdventImagePageComponent implements OnInit {
       imageText:
         "I'm pretty sure there's a lot more to life than being really, really, ridiculously good looking. And I plan on finding out what that is."
     },
+    20: {
+      title: "Happy Star Wars Day!",
+      imageText: "This one was a bit FORCEd, am I right? Funny, I am."
+    },
     21: {
       title: "Where's My Car?",
       imageText: "I knew I should have pinned my parking spot in Google Maps."
@@ -116,6 +120,16 @@ export class AdventImagePageComponent implements OnInit {
       title: "Rata-twenty-two-uille",
       imageText:
         "Alfredo Linguini's neck is WAY too small to make any photoshop look realistic. Also, if you have a problem with that pun, please email me at howDareYou@anthonymetcalfe.com."
+    },
+    23: {
+      title: "Happy Hannukah!",
+      imageText:
+        "That doesn't relate to the image, but I have to respect all (one) of my Jewish viewers. Alternative title: Something about Olivia looking peach and Nixon being impeached, etc., etc. Don't judge me, I'm on break."
+    },
+    24: {
+      title: "Merry Christmas Eve!",
+      imageText:
+        "My original idea for today was to really spend time on making the image and have my faces seemlessly blend in to the Mount Rushmore. But then I realized that would take a lot of work and so here we are."
     }
   };
 
