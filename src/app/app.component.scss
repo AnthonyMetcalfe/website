@@ -1,3 +1,8 @@
 body.fit {
   min-width: fit-content;
 }
+.app-page {
+  min-height: 100vh;
+  overflow: hidden;
+  padding-top: 28px;
+}

@@ -1,0 +1,20 @@
+<div class="page">
+  <mat-card>
+    <table>
+      <thead>
+        <tr>
+          <th>Pick</th>
+          <th>Team</th>
+          <th>Prospect</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pick of myPicks | async">
+          <td>{{ pick.pickNumber }}</td>
+          <td>{{ teamDictionary[pick.team] }}</td>
+          <td>{{ pick.prospect }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </mat-card>
+</div>

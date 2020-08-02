@@ -1,15 +1,27 @@
-.navigation-bar {
-  height: 30px;
-  background-color: #333333;
-  width: 100%;
-  display: flex;
-  color: white;
-  > span {
-    margin-left: 8px;
-    margin-top: 6px;
-  }
-}
+@import "~@angular/material/theming";
 
 .flex-fill {
   flex: 1 1 auto;
+}
+
+:host {
+  align-items: stretch;
+  background-color: mat-color($mat-cyan, 600);
+  // box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2),
+    0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);
+  color: #ffffff;
+  display: flex;
+  height: 28px;
+  left: 0;
+  overflow: hidden;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 1000;
+}
+
+.mat-button {
+  height: 100%;
+  line-height: 1;
 }

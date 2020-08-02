@@ -1,0 +1,54 @@
+<h1 mat-dialog-title>{{ isRegistering ? "Register" : "Login" }}</h1>
+<mat-dialog-content>
+  <form [formGroup]="form">
+    <mat-form-field>
+      <mat-icon matPrefix>account_circle</mat-icon>
+      <input matInput placeholder="Username" formControlName="username" />
+      <mat-error *ngIf="duplicateUsername"
+        >An account with this username already exists.</mat-error
+      >
+      <mat-error *ngIf="nonExistantUsername"
+        >No user found with this username.</mat-error
+      >
+    </mat-form-field>
+    <mat-form-field *ngIf="isRegistering">
+      <mat-icon matPrefix>mail</mat-icon>
+      <input matInput placeholder="Email" formControlName="email" />
+    </mat-form-field>
+    <mat-form-field *ngIf="isRegistering">
+      <mat-icon matPrefix>perm_identity</mat-icon>
+      <input matInput placeholder="First Name" formControlName="firstName" />
+    </mat-form-field>
+    <mat-form-field *ngIf="isRegistering">
+      <mat-icon matPrefix>perm_identity</mat-icon>
+      <input matInput placeholder="Last Name" formControlName="lastName" />
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions *ngIf="usernames | async as usernames">
+  <button
+    mat-raised-button
+    color="primary"
+    *ngIf="isRegistering"
+    (click)="register(usernames)"
+  >
+    Register
+  </button>
+  <button
+    mat-raised-button
+    *ngIf="!isRegistering"
+    color="primary"
+    (click)="login(usernames)"
+  >
+    Login
+  </button>
+  <br /><br />
+  <p *ngIf="!isRegistering">
+    Need to make an account?
+    <span (click)="switchToRegistering()">Register Now</span>
+  </p>
+  <p *ngIf="isRegistering">
+    Already have an account?
+    <span (click)="switchToLogin()">Login Now</span>
+  </p>
+</mat-dialog-actions>

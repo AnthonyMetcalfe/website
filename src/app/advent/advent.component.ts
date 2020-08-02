@@ -5,6 +5,8 @@ import { MatDialog } from "@angular/material/dialog";
 import { MediaObserver } from "@angular/flex-layout";
 import { filter, map } from "rxjs/operators";
 import { Router } from "@angular/router";
+import { HttpClient } from "@angular/common/http";
+import { ApiService } from "../api.service";
 
 @Component({
   selector: "app-advent",
@@ -19,18 +21,20 @@ export class AdventComponent implements OnInit {
   constructor(
     private dialog: MatDialog,
     private mediaObserver: MediaObserver,
-    private router: Router
+    private router: Router,
+    private http: HttpClient,
+    private apiService: ApiService
   ) {}
 
   openImage(day: number) {
-    if (this.date >= day) {
-      this.router.navigate(["advent/", day]);
-    }
+    // if (this.date >= day) {
+    this.router.navigate(["advent/", day]);
+    // }
   }
 
   ngOnInit() {
     this.days = [];
-    this.date = moment().month() === 11 ? moment().date() : 0;
+    // this.date = moment().month() === 11 ? moment().date() : 0;
 
     for (let i = 1; i < 25; i++) {
       this.days.push(i);

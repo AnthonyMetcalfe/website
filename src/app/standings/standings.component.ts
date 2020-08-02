@@ -1,24 +1,24 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { combineLatest, Observable, of, from } from 'rxjs';
-import { map, tap, take, switchMap, concatMap, filter } from 'rxjs/operators';
-import { User } from '../models/user.model';
-import { Roster } from '../models/roster.model';
-import { TeamMatchup } from '../models/team-matchup';
-import { Owner } from '../models/owner.model';
-import _, { Dictionary } from 'lodash';
-import { ScoringSettings } from '../models/scoring-settings.model';
-import { FantasyService } from '../fantasy.service';
-import { PlayerStats } from '../models/player-stats.model';
-import moment from 'moment';
-import { Player } from '../models/player.model';
-import { Select, Store } from '@ngxs/store';
-import { LoadFantasyInformation } from '../fantasy-store/fantasy.action';
+import { Component, OnInit } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { combineLatest, Observable, of, from } from "rxjs";
+import { map, tap, take, switchMap, concatMap, filter } from "rxjs/operators";
+import { OldUser } from "../models/old-user.model";
+import { Roster } from "../models/roster.model";
+import { TeamMatchup } from "../models/team-matchup";
+import { Owner } from "../models/owner.model";
+import _, { Dictionary } from "lodash";
+import { ScoringSettings } from "../models/scoring-settings.model";
+import { FantasyService } from "../fantasy.service";
+import { PlayerStats } from "../models/player-stats.model";
+import moment from "moment";
+import { Player } from "../models/player.model";
+import { Select, Store } from "@ngxs/store";
+import { LoadFantasyInformation } from "../fantasy-store/fantasy.action";
 
 @Component({
-  selector: 'app-standings',
-  templateUrl: './standings.component.html',
-  styleUrls: ['./standings.component.scss']
+  selector: "app-standings",
+  templateUrl: "./standings.component.html",
+  styleUrls: ["./standings.component.scss"]
 })
 export class StandingsComponent implements OnInit {
   completedWeeks: number[];
@@ -26,10 +26,10 @@ export class StandingsComponent implements OnInit {
     Map<string, Player>
   >;
   @Select(state => state.fantasy.rosters) rosters: Observable<Roster[]>;
-  @Select(state => state.fantasy.users) users: Observable<User[]>;
+  @Select(state => state.fantasy.users) users: Observable<OldUser[]>;
   @Select(state => state.fantasy.isMidWeek) isMidWeek: Observable<boolean>;
   @Select(state => state.fantasy.week) week: Observable<number>;
-  userDict: Map<number, User> = new Map<number, User>();
+  userDict: Map<number, OldUser> = new Map<number, OldUser>();
   loading = true;
   liveScoring: Observable<Owner[]>;
 

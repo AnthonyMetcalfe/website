@@ -1,0 +1,22 @@
+<button
+  mat-button
+  class="mat-mini-button"
+  *ngIf="user | async; let user; else: loggedOut"
+  [matMenuTriggerFor]="menu"
+>
+  {{ user.username }}
+</button>
+<ng-template #loggedOut>
+  <button mat-button class="mat-mini-button" (click)="login()">
+    Login
+  </button>
+</ng-template>
+
+<mat-menu #menu="matMenu" [overlapTrigger]="false">
+  <button mat-menu-item (click)="logout()">
+    <span>Logout</span>
+  </button>
+  <!-- <button mat-menu-item (click)="emailMyself()">
+    <span>Email Myself Hello</span>
+  </button> -->
+</mat-menu>

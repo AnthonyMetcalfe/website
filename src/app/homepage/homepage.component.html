@@ -1,9 +1,6 @@
 <div>
-  <button mat-flat-button color="primary" (click)="goToStandings()">
-    Go to Fantasy Standings
-  </button>
-
-  <button mat-flat-button color="warn" (click)="goToAdvent()">
-    Go to Advent Calendar
-  </button>
+  <h1>Welcome</h1>
+  <p>Are you here to play Mastermind? {{ (user | async) ? "" : "Login!" }}</p>
+  <p></p>
+  <p>...please? It's the only thing on here that works right now.</p>
 </div>

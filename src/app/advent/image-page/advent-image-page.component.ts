@@ -138,12 +138,12 @@ export class AdventImagePageComponent implements OnInit {
   constructor(private dialog: MatDialog, private route: ActivatedRoute) {}
 
   openExplanation() {
-    const date = moment().month() === 11 ? moment().date() : 0;
-    if (date >= this.day) {
-      this.dialog.open(AdventImageExplainerDialogComponent, {
-        data: this.imageDatas[this.day]
-      });
-    }
+    // const date = moment().month() === 11 ? moment().date() : 0;
+    // if (date >= this.day) {
+    this.dialog.open(AdventImageExplainerDialogComponent, {
+      data: this.imageDatas[this.day]
+    });
+    // }
   }
 
   ngOnInit() {
@@ -156,14 +156,14 @@ export class AdventImagePageComponent implements OnInit {
         takeUntil(this.onDestroy)
       )
       .subscribe(adventDay => {
-        const date = moment().month() === 11 ? moment().date() : 0;
-        if (date >= adventDay) {
-          this.day = adventDay;
-          this.url = "assets/advent_img/advent_" + adventDay + ".jpg";
-        } else {
-          this.day = 1000;
-          this.url = "assets/advent_img/too_early.jpg";
-        }
+        // const date = moment().month() === 11 ? moment().date() : 0;
+        // if (date >= adventDay) {
+        this.day = adventDay;
+        this.url = "assets/advent_img/advent_" + adventDay + ".jpg";
+        // } else {
+        //   this.day = 1000;
+        //   this.url = "assets/advent_img/too_early.jpg";
+        // }
       });
   }
 }

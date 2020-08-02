@@ -1,0 +1,28 @@
+@import "~@angular/material/theming";
+
+.mat-form-field {
+  width: 300px;
+  border-radius: 6px;
+  padding: 0 4px;
+}
+.mat-icon {
+  vertical-align: bottom;
+  margin-right: 8px;
+}
+h1 {
+  text-align: center;
+  text-transform: uppercase;
+}
+.mat-raised-button {
+  width: 100%;
+}
+p {
+  margin-top: 32px;
+  width: 100%;
+  text-align: center;
+  font-size: 12px;
+  > span {
+    cursor: pointer;
+    color: mat-color($mat-cyan, 600);
+  }
+}

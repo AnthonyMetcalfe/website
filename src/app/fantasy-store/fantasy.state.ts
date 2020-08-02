@@ -1,17 +1,17 @@
-import { Action, State, StateContext } from '@ngxs/store';
+import { Action, State, StateContext } from "@ngxs/store";
 
-import produce from 'immer';
+import produce from "immer";
 
-import { FantasyStateModel } from './fantasy.model';
-import { FantasyService } from '../fantasy.service';
-import { LoadFantasyInformation } from './fantasy.action';
-import { combineLatest } from 'rxjs';
-import { map } from 'rxjs/operators';
-import moment from 'moment';
-import { User } from '../models/user.model';
+import { FantasyStateModel } from "./fantasy.model";
+import { FantasyService } from "../fantasy.service";
+import { LoadFantasyInformation } from "./fantasy.action";
+import { combineLatest } from "rxjs";
+import { map } from "rxjs/operators";
+import moment from "moment";
+import { OldUser } from "../models/old-user.model";
 
 @State<FantasyStateModel>({
-  name: 'fantasy',
+  name: "fantasy",
   defaults: {
     rosters: null,
     users: null,
@@ -37,7 +37,7 @@ export class FantasyState {
       this.fantasyService.getLeague()
     ]).pipe(
       map(([players, rosters, users, league]) => {
-        const userDict: Map<number, User> = new Map<number, User>();
+        const userDict: Map<number, OldUser> = new Map<number, OldUser>();
         // It's Thursday-Monday.
         const midWeekFlag = moment().day() >= 4 || moment().day() <= 1;
         const weekNumber =

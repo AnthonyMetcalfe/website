@@ -1,6 +1,8 @@
-<nav class="navigation-bar">
-  <span mat-button>AnthonyMetcalfe</span>
-  <span class="flex-fill"></span>
-  <span>Fantasy</span>
-  <span>Search</span>
-</nav>
+<button mat-button class="mat-mini-button" [routerLink]="''">
+  Anthony Metcalfe
+</button>
+<span class="flex-fill"></span>
+<am-nfl-draft-navbar></am-nfl-draft-navbar>
+<am-fantasy-navbar *ngIf="false"></am-fantasy-navbar>
+<am-mastermind-navbar></am-mastermind-navbar>
+<am-user-navbar></am-user-navbar>

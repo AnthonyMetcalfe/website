@@ -3,7 +3,7 @@ import { Roster } from "./models/roster.model";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 import { ApiService } from "./api.service";
-import { User } from "./models/user.model";
+import { OldUser } from "./models/old-user.model";
 import { League } from "./models/league.model";
 import { TeamMatchup } from "./models/team-matchup";
 import { PlayerStats } from "./models/player-stats.model";
@@ -49,8 +49,8 @@ export class FantasyService {
     return this.apiService.get<Roster[]>(this.apiEndpoint + "rosters");
   }
 
-  getUsers(): Observable<User[]> {
-    return this.apiService.get<User[]>(this.apiEndpoint + "users");
+  getUsers(): Observable<OldUser[]> {
+    return this.apiService.get<OldUser[]>(this.apiEndpoint + "users");
   }
 
   getLeague(): Observable<League> {

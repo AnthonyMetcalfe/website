@@ -1,0 +1,242 @@
+@import "~@angular/material/theming";
+
+span.flex-fill {
+  flex: 1 1 auto;
+}
+
+.board {
+  display: flex;
+  flex-direction: column;
+  > div {
+    margin-left: auto;
+    margin-right: auto;
+
+    &:first-of-type {
+      order: 0;
+      width: 180px;
+      padding-left: 8px;
+      margin-bottom: 4px;
+      > div {
+        background: mat-color($mat-cyan, 600);
+      }
+    }
+
+    &:not(:first-of-type) {
+      display: flex;
+      margin-bottom: 4px;
+      margin-top: 4px;
+      padding-left: 44px;
+      width: 242px;
+      &.double {
+        padding-left: 16px;
+      }
+      > span {
+        font-size: 24px;
+        line-height: 45px;
+      }
+      > div {
+        display: flex;
+      }
+      .mat-icon {
+        font-size: 36px;
+        line-height: 47px;
+        margin-left: -32px;
+        margin-right: 8px;
+      }
+      > div.results {
+        display: flex;
+        flex-wrap: wrap;
+        width: 34px;
+        margin-top: 5px;
+        height: 34px;
+
+        > .result {
+          height: 12px;
+          width: 12px;
+          border-radius: 50%;
+          border: 1px solid #000000;
+          display: inline-block;
+          margin: 1px;
+          &.result-1 {
+            background-color: #ffffff;
+          }
+          &.result-2 {
+            background-color: #000000;
+          }
+        }
+      }
+    }
+  }
+}
+
+.answers {
+  display: flex;
+  place-content: center;
+  margin-top: 12px;
+
+  &.hidden {
+    .marker {
+      background-color: mat-color($mat-blue-grey, 500) !important;
+    }
+  }
+}
+
+.user-interactions {
+  display: flex;
+  place-content: center;
+  margin-top: 8px;
+
+  > h3 {
+    margin: 0;
+  }
+}
+
+h3 {
+  text-align: center;
+}
+
+.options {
+  display: flex;
+  > div {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 14px;
+  }
+}
+
+.mobile-back {
+  display: none;
+}
+
+h1 {
+  font-size: 48px;
+  text-align: center;
+}
+
+p {
+  text-align: center;
+}
+
+.making {
+  display: flex;
+}
+
+.creation-choice {
+  display: flex;
+  .mat-form-field,
+  .mat-slide-toggle {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.marker {
+  background-color: mat-color($mat-blue-grey, 50);
+  border-radius: 50%;
+  border: 2px solid #000000;
+  display: inline-block;
+  font-size: 22px;
+  height: 25px;
+  line-height: 23px;
+  margin: 8px;
+  text-align: center;
+  width: 25px;
+
+  &.marker--1 {
+    background-color: mat-color($mat-cyan, 600);
+  }
+  &.marker-1 {
+    background-color: mat-color($mat-red, 500);
+  }
+  &.marker-2 {
+    background-color: mat-color($mat-green, 500);
+  }
+  &.marker-3 {
+    background-color: mat-color($mat-blue, 500);
+  }
+  &.marker-4 {
+    background-color: mat-color($mat-yellow, 500);
+  }
+  &.marker-5 {
+    background-color: #000000;
+  }
+  &.marker-6 {
+    background-color: #ffffff;
+  }
+
+  &.marker-shown {
+    color: transparent;
+  }
+}
+
+::ng-deep .mat-slide-toggle.mat-checked {
+  .mat-slide-toggle-thumb {
+    background-color: mat-color($mat-cyan, 600);
+  }
+  .mat-slide-toggle-bar {
+    background-color: rgba(62, 142, 148, 0.54);
+  }
+}
+
+.mat-sidenav-container {
+  height: 100%;
+  .mat-sidenav {
+    width: 20%;
+    .mat-toolbar {
+      background-color: unset;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    }
+    .mat-nav-list .mat-list-item {
+      &.selected {
+        background-color: mat-color($mat-cyan, 100);
+      }
+      h3 {
+        text-align: left;
+        display: flex;
+        > span {
+          font-size: 12px;
+          font-style: italic;
+          background-color: hotpink;
+          border-radius: 4px;
+          padding: 4px;
+          line-height: 15px;
+          margin-left: auto;
+        }
+      }
+      border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+      &:first-of-type {
+        border-top: 1px solid rgba(0, 0, 0, 0.12);
+      }
+    }
+  }
+  .mat-card {
+    margin: 16px;
+  }
+}
+
+@media only screen and (max-width: 959px) {
+  .mat-sidenav-container {
+    .mat-sidenav {
+      width: 100%;
+      .tutorial {
+        display: none;
+      }
+    }
+    ::ng-deep .mat-drawer-content {
+      z-index: 100;
+      height: 100%;
+      margin-left: 0 !important;
+      > .mat-card {
+        margin: 0;
+        height: 100%;
+        padding: 0;
+      }
+      .mobile-back {
+        display: unset;
+      }
+      &.unused {
+        display: none;
+      }
+    }
+  }
+}

@@ -1,8 +1,11 @@
 div {
   width: 100%;
-
+  h1,
+  h3,
+  p {
+    text-align: center;
+  }
   margin-top: 20%;
-  display: flex;
   place-content: space-evenly;
   .mat-flat-button {
     height: 100px;

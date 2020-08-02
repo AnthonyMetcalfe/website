@@ -7,7 +7,7 @@ import { filter, switchMap, map } from "rxjs/operators";
 import { ScoringSettings } from "src/app/models/scoring-settings.model";
 import _ from "lodash";
 import { FantasyService } from "src/app/fantasy.service";
-import { User } from "src/app/models/user.model";
+import { OldUser } from "src/app/models/old-user.model";
 
 @Component({
   selector: "app-live-scoring",
@@ -21,7 +21,7 @@ export class LiveScoringComponent implements OnInit {
   @Select(state => state.fantasy.isMidWeek) isMidWeek: Observable<boolean>;
   @Select(state => state.fantasy.week) week: Observable<number>;
   @Select(state => state.fantasy.userDict) userDict: Observable<
-    Map<number, User>
+    Map<number, OldUser>
   >;
 
   constructor(

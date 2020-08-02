@@ -1,0 +1,10 @@
+<button mat-button class="mat-mini-button" [matMenuTriggerFor]="menu">
+  Fantasy
+</button>
+
+<mat-menu #menu="matMenu" [overlapTrigger]="false">
+  <button mat-menu-item routerLink="/fantasy/standings">
+    <mat-icon>list</mat-icon>
+    <span>Standings</span>
+  </button>
+</mat-menu>

@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { combineLatest, Observable, of, from } from "rxjs";
 import { map, tap, take, switchMap, concatMap, filter } from "rxjs/operators";
-import { User } from "../../models/user.model";
+import { OldUser } from "../../models/old-user.model";
 import { Roster } from "../../models/roster.model";
 import { TeamMatchup } from "../../models/team-matchup";
 import { Owner } from "../../models/owner.model";
@@ -26,11 +26,11 @@ export class FantasyStandingsComponent implements OnInit {
     Map<string, Player>
   >;
   @Select(state => state.fantasy.rosters) rosters: Observable<Roster[]>;
-  @Select(state => state.fantasy.users) users: Observable<User[]>;
+  @Select(state => state.fantasy.users) users: Observable<OldUser[]>;
   @Select(state => state.fantasy.isMidWeek) isMidWeek: Observable<boolean>;
   @Select(state => state.fantasy.week) week: Observable<number>;
   @Select(state => state.fantasy.userDict) userDict: Observable<
-    Map<number, User>
+    Map<number, OldUser>
   >;
   loading = true;
   liveScoring: Observable<Owner[]>;

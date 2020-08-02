@@ -1,0 +1,198 @@
+<div class="page">
+  <mat-sidenav-container>
+    <mat-sidenav-content [class.unused]="!creating && !boardArray?.length">
+      <mat-card>
+        <div>
+          <button class="mobile-back" mat-icon-button (click)="resetSetup()">
+            <mat-icon>arrow_back</mat-icon>
+          </button>
+          <h1>Mastermind</h1>
+        </div>
+        <ng-container *ngIf="boardArray?.length; else pickBoard">
+          <div class="board">
+            <div>
+              <span></span>
+              <div>
+                <span
+                  *ngFor="let color of boardArray"
+                  [className]="'marker marker-' + (solved ? color : '')"
+                  [class.marker-shown]="solved"
+                  >?</span
+                >
+              </div>
+            </div>
+            <div
+              *ngFor="let boardOption of boardOptions; let i = index"
+              [class.double]="i + 1 >= 10"
+              [style.order]="boardOptions.length - i"
+            >
+              <mat-icon *ngIf="i == previousGuesses.length - (solved ? 1 : 0)"
+                >arrow_right_alt</mat-icon
+              >
+              <span>{{ i + 1 }}</span>
+              <div>
+                <ng-container *ngIf="previousGuesses.length > i">
+                  <span
+                    *ngFor="let guess of previousGuesses[i]"
+                    class="marker marker-{{ guess }}"
+                  ></span>
+                </ng-container>
+                <ng-container *ngIf="previousGuesses.length == i && !solved">
+                  <span
+                    *ngFor="let guess of currentGuessBoard; let i = index"
+                    class="marker marker-{{ guess }}"
+                    (click)="removeGuess(i)"
+                  ></span>
+                  <ng-container *ngFor="let i of [0, 1, 2, 3]">
+                    <span
+                      *ngIf="i < 4 - currentGuessBoard.length"
+                      class="marker marker-0"
+                      >-</span
+                    >
+                  </ng-container>
+                </ng-container>
+                <ng-container *ngIf="previousGuesses.length < i && !solved">
+                  <span *ngFor="let guess of [0, 0, 0, 0]" class="marker"
+                    >-</span
+                  >
+                </ng-container>
+              </div>
+              <div class="results" *ngIf="previousResults.length > i">
+                <span
+                  class="result result-{{ result }}"
+                  *ngFor="let result of previousResults[i]"
+                ></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="user-interactions">
+            <button mat-stroked-button (click)="makeGuess()" *ngIf="!solved">
+              Submit Guess
+            </button>
+            <h3 *ngIf="solved">Solved!</h3>
+          </div>
+
+          <span class="flex-fill"></span>
+
+          <div class="options">
+            <div>
+              <span
+                *ngFor="let i of [1, 2, 3, 4, 5, 6]"
+                class="marker marker-{{ i }}"
+                (click)="addGuess(i)"
+              ></span>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="creating">
+          <form [formGroup]="form">
+            <h3>Choose Opponent</h3>
+            <div class="creation-choice">
+              <mat-form-field>
+                <mat-select formControlName="solver">
+                  <mat-option value="">Anyone</mat-option>
+                  <mat-option
+                    *ngFor="let username of usernames | async"
+                    [value]="username"
+                    >{{ username }}</mat-option
+                  >
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <h3>Choose Difficulty</h3>
+            <div class="creation-choice">
+              <mat-slide-toggle formControlName="difficultyLevel"
+                >Allow Duplicates</mat-slide-toggle
+              >
+            </div>
+          </form>
+          <h3>Choose Board</h3>
+          <div class="board">
+            <div>
+              <span></span>
+              <div class="making">
+                <span
+                  *ngFor="let color of currentGuessBoard; let i = index"
+                  class="marker marker-{{ color }}"
+                  (click)="removeGuess(i)"
+                ></span>
+                <ng-container *ngFor="let i of [0, 1, 2, 3]">
+                  <span
+                    *ngIf="i < 4 - currentGuessBoard.length"
+                    class="marker marker-0"
+                    >-</span
+                  >
+                </ng-container>
+              </div>
+            </div>
+          </div>
+          <div class="options">
+            <div>
+              <span
+                *ngFor="let i of [1, 2, 3, 4, 5, 6]"
+                class="marker marker-{{ i }}"
+                (click)="addToBoard(i)"
+              ></span>
+            </div>
+          </div>
+          <div class="user-interactions">
+            <button mat-stroked-button (click)="makeBoard()">
+              Submit Board
+            </button>
+          </div>
+        </ng-container>
+        <ng-template #pickBoard>
+          <p *ngIf="!creating">Select Game to Begin...</p>
+        </ng-template>
+      </mat-card>
+    </mat-sidenav-content>
+
+    <mat-sidenav mode="side" opened="true" position="start">
+      <mat-toolbar>
+        <h3>Mastermind Games</h3>
+        <span class="flex-fill"></span>
+        <button mat-icon-button class="tutorial" (click)="showTutorial()">
+          <mat-icon matTooltip="Show Tutorial">help_outline</mat-icon>
+        </button>
+        <button mat-icon-button (click)="createBoard()">
+          <mat-icon matTooltip="Create New Game">add</mat-icon>
+        </button>
+      </mat-toolbar>
+      <mat-nav-list>
+        <ng-container *ngIf="(myBoards | async)?.length">
+          <div mat-subheader>My Games</div>
+          <a
+            mat-list-item
+            (click)="playBoard(myBoard)"
+            *ngFor="let myBoard of myBoards | async"
+            [class.selected]="board?.id == myBoard.id"
+          >
+            <h3 matLine>
+              <b>
+                {{ myBoard.creator }}
+              </b>
+              <span *ngIf="myBoard.difficultyLevel">Allows Duplicates</span>
+            </h3>
+          </a>
+          <mat-divider></mat-divider>
+        </ng-container>
+        <div mat-subheader>All Available Games</div>
+        <a
+          mat-list-item
+          (click)="playBoard(availableBoard)"
+          *ngFor="let availableBoard of availableBoards | async"
+          [class.selected]="board?.id == availableBoard.id"
+        >
+          <h3 matLine>
+            <b>{{ availableBoard.creator }}</b>
+            <span *ngIf="availableBoard.difficultyLevel"
+              >Allows Duplicates</span
+            >
+          </h3>
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
+  </mat-sidenav-container>
+</div>
