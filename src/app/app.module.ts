@@ -21,7 +21,6 @@ import { MatTooltipModule } from "@angular/material/tooltip";
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { RouterModule, Routes } from "@angular/router";
-import { SatPopoverModule } from "@ncstate/sat-popover";
 import { NgxsModule } from "@ngxs/store";
 import { NgxWebstorageModule } from "ngx-webstorage";
 
@@ -147,7 +146,6 @@ export const routes: Routes = [
     MatTabsModule,
     MatTableModule,
     MatToolbarModule,
-    SatPopoverModule,
     RouterModule.forRoot(routes),
     NgxWebstorageModule.forRoot({
       prefix: "am",
